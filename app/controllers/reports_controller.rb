@@ -9,13 +9,22 @@ class ReportsController < ApplicationController
 
   def create
     @report = Report.create(report_params)
-    lat = @report.convert_to_latlng["lat"]
-    long = @report.convert_to_latlng["lng"]
-    @report.update(user_id: current_user.id, lat: lat, long: long)
+    if current_user 
+      lat = @report.convert_to_latlng["lat"]
+      long = @report.convert_to_latlng["lng"]
+      @report.update(user_id: current_user.id, lat: lat, long: long)
+    end
+
     redirect_to reports_path
   end
 
 
+  def get_geo
+    @report = Report.create
+    respond_to do |format|
+      format.json 
+    end
+  end
 
 
   private
