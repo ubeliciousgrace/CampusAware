@@ -20,12 +20,12 @@
   </div>
 
    <div class="field">
-    <%= f.label :school %><br />
+    <%= f.label :school_name %><br />
 
     <% school_names = School.all.collect do |school| %>
     <% school.name %>
     <% end %>
-    <%= f.select :school, school_names %>
+    <%= f.select :school_name, school_names %>
   </div>
 
   <div class="field">

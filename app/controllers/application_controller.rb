@@ -13,6 +13,7 @@ class ApplicationController < ActionController::Base
     devise_parameter_sanitizer.for(:sign_up) << :name
     devise_parameter_sanitizer.for(:sign_up) << :email
     devise_parameter_sanitizer.for(:sign_up) << :zip_code
+    devise_parameter_sanitizer.for(:sign_up) << :school_name
   end
 
 end
