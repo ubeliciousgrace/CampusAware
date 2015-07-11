@@ -14,3 +14,30 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+
+$(document).ready(function(){
+  var latitude;
+  var longitude;
+
+function getLocation() {
+     navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    getLocation();
+
+    function showPosition(position) {
+      latitude = position["coords"]["latitude"];
+      longitude = position["coords"]["longitude"];
+      // debugger;
+      $.ajax({
+       type: 'POST',
+       url: '/reports/get_geo',
+       data: {lat: latitude, lng: longitude},
+       success: function(data){
+        console.log(data)
+       }
+    })
+    }
+
+    
+
+});
