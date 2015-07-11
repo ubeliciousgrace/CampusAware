@@ -1,9 +1,118 @@
-<%= link_to "Sign Out!", destroy_user_session_path, method: :delete %>
+<!-- <%= link_to "Sign Out!", destroy_user_session_path, method: :delete %> -->
 
-<h2>Hello World</h2>
-<p>
-Sample setup.
-</p>
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Campus Safety</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+
+    <!-- BOOTSTRAP Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
 
-<%= link_to "Reports", reports_path %>
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYKN9BDT7ZidYhsISTYbEOoSyLYgavr30"></script>   
+
+	
+  </head>
+
+  <body>
+  	<div id="wrapper">
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+                        <h2><span class="glyphicon glyphicon-home"></h2></span> 
+                    </a>
+                </li>
+                <li>
+                    <h3><a href="#"><i class="fa fa-map-marker"></i> Report Now</a></h3>
+                </li>
+
+                <li>
+                    <h3><a href="#"><span class="glyphicon glyphicon-time"></span> Filter Time</a></h3>
+                </li>
+
+                <li>
+                    <h3><a href="#"><span class="glyphicon glyphicon-calendar"></span> Filter Dates</a></h3>
+                </li>
+
+                <li>
+                    <h3><a href="#"><span class="glyphicon glyphicon-filter"></span> Filter Type</a></h3>
+                </li>
+
+
+               
+                <!-- <li>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                </li> -->
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+
+            	
+
+                <div class="row" id="map">
+                    <div class="col-md-12">
+                    	<h1 id="school-title"><i class="fa fa-university"></i> University of California Berkeley</h1>
+                    	<iframe width="100%" height="90%%;" frameborder="0" scrolling="no" src="/map.html"></iframe>
+
+
+                        
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+    </div>
+  	
+
+<!--   	<div class="container-fluid">
+  		<div class="row">
+  			<div class="col-md-2">
+  				<h1>sidebar bro</h1>
+
+  			</div>
+
+  			<div class="col-md-10">
+  				<iframe width="100%" height="100%;" frameborder="0" scrolling="no" src="/map.html"></iframe>
+
+
+
+  			</div>
+
+
+  		</div>
+
+  	</div> -->
+  	
+	 
+
+
+  </body>
+</html>
+
+
+<!-- <%= link_to "Reports", reports_path %> -->
