@@ -1,0 +1,8 @@
+Running in verbose mode
+
+-----------------------------------------------------------------
+  pg_upgrade run on Fri Jul 10 20:51:04 2015
+-----------------------------------------------------------------
+
+check for "/usr/local/var/postgres/pg_tblspc" failed: No such file or directory
+
