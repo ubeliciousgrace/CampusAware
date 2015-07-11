@@ -20,7 +20,8 @@ class ReportsController < ApplicationController
 
 
   def get_geo
-    @report = Report.create
+  schools = School.within(5, :origin => [params[:lat], params[:lng]])
+  binding.pry
     respond_to do |format|
       format.json 
     end
