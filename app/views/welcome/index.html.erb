@@ -1,5 +1,5 @@
-<%= link_to "Sign Out!", destroy_user_session_path, method: :delete %>
-<%= link_to "Sign In!", new_user_registration_path %>
+
+
 
 
 <!DOCTYPE html>
@@ -42,7 +42,7 @@
                     </a>
                 </li>
                 <li>
-                    <h3><a href="#"><i class="fa fa-map-marker"></i> Report Now</a></h3>
+                    <h3><a href="#"><i class="fa fa-map-marker"></i> <%= link_to "Report Now", new_report_path %></a></h3>
                 </li>
 
                 <li>
@@ -57,8 +57,18 @@
                     <h3><a href="#"><span class="glyphicon glyphicon-filter"></span> Filter Type</a></h3>
                 </li>
 
+                <li>
+                    <h4><a href="#"> <%= link_to "Sign up", new_user_registration_path %> </a></h4>
+                </li>
+                
+                <li>
+                  <h4><a href="#"> <%= link_to "Sign In", new_user_session_path %> </a></h4>
+                </li>
 
-               
+                <li>
+                    <h4><a hred="#"> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </a><h4>
+                </li>
+
                 <!-- <li>
                     <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
                 </li> -->
