@@ -46,7 +46,7 @@
 #wrapper.toggled #page-content-wrapper {
     position: absolute;
     margin-right: -250px;
-}
+}       
 
 /* Sidebar Styles */
 
@@ -63,6 +63,7 @@
     text-indent: 20px;
     line-height: 40px;
     padding-bottom: 5%;
+   
 }
 
 .sidebar-nav li a {
