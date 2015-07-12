@@ -18,10 +18,76 @@
 	<!-- Font Awesome -->
 	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-
 	<!-- Latest compiled and minified JavaScript -->
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
 	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYKN9BDT7ZidYhsISTYbEOoSyLYgavr30"></script>   
+	<script>
+		function initialize() {
+		  var mapOptions = {
+		    zoom: 10
+		  };
+		  map = new google.maps.Map(document.getElementById('map-canvas'),
+		      mapOptions);
+
+		  google.maps.event.addListener(map, 'click', function(e) {
+		    placeMarker(e.latLng, map);
+		  });
+
+		  // Try HTML5 geolocation
+		  if(navigator.geolocation) {
+		    navigator.geolocation.getCurrentPosition(function(position) {
+		      var pos = new google.maps.LatLng(position.coords.latitude,
+		                                       position.coords.longitude);
+
+		      // var infowindow = new google.maps.InfoWindow({
+		      //   map: map,
+		      //   position: pos,
+		      //   content: 'Location found using HTML5.'
+		      // });
+
+		  //   	var marker = new google.maps.Marker({
+				//     position: pos,
+				//     title:"Hello World!"
+				// });
+
+				// // To add the marker to the map, call setMap();
+				// marker.setMap(map);
+				
+		      map.setCenter(pos);
+		    }, function() {
+		      handleNoGeolocation(true);
+		    });
+		  } else {
+		    // Browser doesn't support Geolocation
+		    handleNoGeolocation(false);
+		  }
+		}
+		function handleNoGeolocation(errorFlag) {
+		  if (errorFlag) {
+		    var content = 'Error: The Geolocation service failed.';
+		  } else {
+		    var content = 'Error: Your browser doesn\'t support geolocation.';
+		  }
+
+		  var options = {
+		    map: map,
+		    position: new google.maps.LatLng(60, 105),
+		    content: content
+		  };
+
+		  var infowindow = new google.maps.InfoWindow(options);
+		  map.setCenter(options.position);
+		}
+		function placeMarker(position, map) {
+				  var marker = new google.maps.Marker({
+				    position: position,
+				    map: map
+				  });
+				  map.panTo(position);
+				}
+
+		google.maps.event.addDomListener(window, 'load', initialize);
+  </script>
   </head>
 
   <body>
@@ -32,11 +98,15 @@
             <ul class="sidebar-nav">
                 <li class="sidebar-brand">
                     <a href="#">
-                        <h2><span class="glyphicon glyphicon-home"></h2></span> 
+                    	
                     </a>
                 </li>
                 <li>
-                    <h3><a href="#"><i class="fa fa-map-marker"></i> <%= link_to "Report Now", new_report_path %></a></h3>
+                	<h4 id="school-name"></h4>
+
+                </li>
+                <li>
+                    <h3><!-- <i class="fa fa-map-marker"></i> --> <%= link_to "Report Now", new_report_path %>
                 </li>
 
                 <li>
@@ -80,11 +150,7 @@
             <div class="container-fluid">
                 <div class="row" id="map">
                     <div class="col-md-12">
-                    	<h1 id="school-title"><i class="fa fa-university"></i> University of California Berkeley</h1>
-                    	<iframe width="100%" height="90%%;" frameborder="0" scrolling="no" src="/map.html"></iframe>
-
-
-                        
+                    	<div id="map-canvas"></div>
 
                     </div>
                 </div>
@@ -93,25 +159,5 @@
         <!-- /#page-content-wrapper -->
 
     </div>
-  	
-
-<!--   	<div class="container-fluid">
-  		<div class="row">
-  			<div class="col-md-2">
-  				<h1>sidebar bro</h1>
-
-  			</div>
-
-  			<div class="col-md-10">
-  				<iframe width="100%" height="100%;" frameborder="0" scrolling="no" src="/map.html"></iframe>
-
-
-
-  			</div>
-
-
-  		</div>
-
-  	</div> -->
   </body>
 </html>
