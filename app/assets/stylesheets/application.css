@@ -13,3 +13,19 @@
  *= require_tree .
  *= require_self
  */
+
+#wrapper, #page-content-wrapper, .container-fluid, .row#map, .col-md-10, .col-md-12  {
+	height:100%;
+}
+
+
+div#page-content-wrapper {
+	background-color: #363636;
+}
+
+h1#school-title { 
+	color:#fff !important;
+	text-align: center;
+	text-shadow: 5px 2px #121212;
+	margin-bottom: 2%;
+}
