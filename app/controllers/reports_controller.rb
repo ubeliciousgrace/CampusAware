@@ -10,7 +10,8 @@ class ReportsController < ApplicationController
   def create
 
     @report = Report.create(report_params)
-    if current_user
+
+    if current_user 
       lat = @report.convert_to_latlng["lat"]
       long = @report.convert_to_latlng["lng"]
       @report.update(user_id: current_user.id, lat: lat, long: long)
@@ -56,7 +57,8 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:title, :description, :street_number, :street_name, :city, :state, :zip_code, :bystander_or_victim, report_type_ids: [])
+    params.require(:report).permit(:title, :description, :street_number, :street_name, :city, :state, :zip_code, :bystander_or_victim, type_ids: [])
+    # params.require(:report).permit(:title, :description, :bystander_or_victim, report_type_ids: [])
   end
 
 end

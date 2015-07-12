@@ -3,6 +3,7 @@
     <div class = "report_fields">
       <%= form_for(@report) do |f| %>
 
+
         <div class="field">
           <%= f.label :title %><br />
           <%= f.text_field :title, autofocus: true %>
@@ -20,19 +21,28 @@
         </div>
 
         <div class="field">
-          <%= f.collection_check_boxes :report_type_ids, ReportType.all, :id, :title %><br />
+          <%= f.collection_check_boxes :type_ids, Type.all, :id, :title %><br />
 
         </div>
 
-        <div class="field">
-          <%= f.label :street_number %><br />
-          <%= f.number_field :street_number %>
-        </div>
+  <div class="field">
+    <%= f.label :description %><br />
+    <%= f.text_area :description %>
+  </div>
 
-         <div class="field">
-          <%= f.label :street_name %><br />
-          <%= f.text_field :street_name %>
-        </div>
+<div class="field">
+    <%= f.label :street_number %><br />
+    <%= f.number_field :street_number %>
+  </div>
+
+
+<div class="field">
+    <%= f.label :street_name %><br />
+    <%= f.text_field :street_name %>
+  </div>
+
+
+        
 
          <div class="field">
           <%= f.label :city %><br />
@@ -50,6 +60,7 @@
         </div>
 
 
+  
 
         <div class="actions">
           <%= f.submit "Create Report" %>
