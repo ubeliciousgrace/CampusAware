@@ -7,6 +7,7 @@ gem 'geokit-rails'
 gem 'rails', '4.1.6'
 # Use postgresql as the database for Active Record
 gem 'pg'
+gem 'filterrific'
 # Use SCSS for stylesheets
 gem 'ember-rails'
 gem 'ember-source', '~> 1.9.0'

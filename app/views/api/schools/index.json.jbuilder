@@ -8,8 +8,6 @@ json.schools @schools do |school|
   json.zip_code school.zip_code
   json.lat school.lat
   json.long school.long
-  json.created_at school.created_at
 
 
-  json.report_id school.report ? school.report_id : nil
 end
