@@ -1,4 +1,4 @@
-json.schools @schools do
+json.school do
   json.id    school.id
   json.name school.name
   json.street_name school.street_name

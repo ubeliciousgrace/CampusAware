@@ -1,4 +1,4 @@
-json.reports @reports do
+json.report do
   json.id   report.id
   json.type report.type
   json.description report.description
@@ -6,7 +6,7 @@ json.reports @reports do
   json.street_name report.street_name
   json.city report.city
   json.state report.state
-  json.zip_code report.zip_code
+  json.zip_code report.zip_codex
   json.created_at report.created_at
 
 end
