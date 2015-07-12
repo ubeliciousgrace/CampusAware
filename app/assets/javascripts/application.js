@@ -16,7 +16,15 @@
 //= require_tree .
 
 
-$(document).ready(function(){	
+$(document).ready(function(){
+	
+	document.getElementById('verbal').onclick=function() {
+		filter_by_type('test'); 
+	};
+	
+	function filter_by_type(type) {
+		alert("BLAH");  
+	}
 
 	var latitude;
 	var longitude;
@@ -57,6 +65,7 @@ $(document).ready(function(){
 	}
 
 	function initialize(reports) {
+		var reportsList = []; 
 		  var mapOptions = {
 		    zoom: 12
 		  };
@@ -70,6 +79,8 @@ $(document).ready(function(){
 
 		for (var i=0; i < reports.length; i++) { 
 			var thisReport = reports[i]; 
+			reportsList.push(thisReport); 
+
 			var thisLatlng = new google.maps.LatLng(thisReport['report_lat'],thisReport['report_long']);
 
 			
@@ -79,9 +90,6 @@ $(document).ready(function(){
 		       
 		        content: contentString
 		    });
-
-
-
 
 			var marker = new google.maps.Marker({
 
@@ -167,6 +175,8 @@ $(document).ready(function(){
 		google.maps.event.addDomListener(window, 'load', initialize);
 
 });
+
+
 
 
 
