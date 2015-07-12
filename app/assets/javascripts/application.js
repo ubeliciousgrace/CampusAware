@@ -19,29 +19,27 @@
 $(document).ready(function(){
 	var latitude;
 	var longitude;
-
-
 	function getLocation() {
-	     navigator.geolocation.getCurrentPosition(showPosition);
-	    }
-	    getLocation();
+	  navigator.geolocation.getCurrentPosition(showPosition);
+	}
+  getLocation();
 
-	    function showPosition(position) {
-	      latitude = position["coords"]["latitude"];
-	      longitude = position["coords"]["longitude"];
-	      // debugger;
-	      $.ajax({
-	       type: 'POST',
-	       url: '/reports/get_geo',
-	       data: {lat: latitude, lng: longitude},
-	       success: function(data){
-	       	// debugger;
-	        console.log(data); 
-	        console.log(data['schools'][0]['school_name']); 
-	        $('#school-name').text(data['schools'][0]['school_name']); 
-	       }
-	    })
-	    }
+  function showPosition(position) {
+    latitude = position["coords"]["latitude"];
+    longitude = position["coords"]["longitude"];
+    // debugger;
+    $.ajax({
+    	type: 'POST',
+    	url: '/reports/get_geo',
+    	data: {lat: latitude, lng: longitude},
+    	success: function(data){
+     		// debugger;
+      	console.log(data); 
+      	console.log(data['schools'][0]['school_name']); 
+      	$('#school-name').text(data['schools'][0]['school_name']); 
+     	}
+  	})
+	}
 
 	function initialize() {
 		  var mapOptions = {
@@ -115,7 +113,5 @@ $(document).ready(function(){
 		google.maps.event.addDomListener(window, 'load', initialize);
 
 });
-
-
 
 
