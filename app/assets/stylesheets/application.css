@@ -29,9 +29,17 @@ div#page-content-wrapper {
 	background-color: #363636;
 }
 
-h4#school-name { 
+h4#school-name {
+
 	color:#fff !important;
 	text-align: center;
 	text-shadow: 5px 2px #121212;
 	margin-bottom: 2%;
+}
+
+
+#api-wrapper {
+    width:900px;
+    margin: 0px auto;
+
 }
