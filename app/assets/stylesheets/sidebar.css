@@ -39,8 +39,8 @@
 
 #page-content-wrapper {
     width: 100%;
-    position: absolute;
-    padding: 15px;
+/*    position: absolute;
+*/    padding: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -56,13 +56,14 @@
     width: 250px;
     margin: 0;
     padding: 0;
-    list-style: none;
-}
+/*    list-style: none;
+*/}
 
 .sidebar-nav li {
     text-indent: 20px;
     line-height: 40px;
     padding-bottom: 5%;
+    text-align: center;
 
 }
 
@@ -71,6 +72,8 @@
     text-decoration: none;
     color: #999999;
     text-align: center;
+/*    display: inline;
+*/    font-size: 22px;
 
 }
 

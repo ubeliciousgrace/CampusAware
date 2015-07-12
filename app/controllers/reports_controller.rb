@@ -17,8 +17,7 @@ class ReportsController < ApplicationController
       @report.update(user_id: current_user.id, lat: lat, long: long)
 
 
-      schools = School.within(30, :origin => [lat, long])
-
+      schools = School.within(100, :origin => [lat, long])
       @close_schools = []
       schools.each do |school|
         if school.lat != nil

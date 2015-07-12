@@ -9,16 +9,9 @@
                 	
                 </a>
             </li>
+          
             <li>
-            	<h4 id="school-name"></h4>
-
-            </li>
-            <li>
-                <h3><%= link_to "Report Now", new_report_path %>
-            </li>
-
-            <li>
-                <h3><%= link_to "Try Out API", welcome_api_path %></h3>
+                <h3><a><i class="fa fa-exclamation-circle"></i></a> <%= link_to "Report Now", new_report_path %>
             </li>
 
             <li>
@@ -30,6 +23,10 @@
             </li>
 
             <li>
+                <h3><a href="#"><span class="glyphicon glyphicon-filter"></span> Filter Types</a></h3>
+            </li>
+
+            <!-- <li>
    				<h3>
   	            <div class="btn-group">
         				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -43,7 +40,12 @@
         				  </ul>
         				</div>
               </h3>
-      			</li>
+      			</li> -->
+
+
+      		 <li>
+                <h3><a><i class="fa fa-file-code-o"></i></a> <%= link_to "Try Out API", welcome_api_path %></h3>
+            </li>
 
             <% if user_signed_in? %>
             <li>
@@ -65,14 +67,12 @@
 
     <!-- Page Content -->
     <div id="page-content-wrapper">
-        <div class="container-fluid">
-
-
-        	
+        <div class="container-fluid"> 
 
             <div class="row" id="map">
                 <div class="col-md-12">
-                	<div id="map-canvas"></div>
+                		<h2 id="school-name" style="margin-top:5%;"></h2>
+                	<div id="map-canvas" style="height:85%; width:auto;"></div>
 
                 </div>
             </div>

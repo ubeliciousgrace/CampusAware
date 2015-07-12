@@ -17,7 +17,8 @@
 html, body, #map-canvas {
         height: 100%;
         margin: 0px;
-        padding: 0px
+        padding: 0px;
+        font-family: 'Lato', sans-serif;
 }
 
 #wrapper, #page-content-wrapper, .container-fluid, .row#map, .col-md-10, .col-md-12  {
@@ -29,7 +30,7 @@ div#page-content-wrapper {
 	background-color: #363636;
 }
 
-h4#school-name {
+h2#school-name {
 
 	color:#fff !important;
 	text-align: center;
@@ -42,4 +43,8 @@ h4#school-name {
     width:900px;
     margin: 0px auto;
 
+}
+
+.report_container {
+	margin-top:6%;
 }
