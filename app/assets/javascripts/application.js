@@ -24,6 +24,7 @@ $(document).ready(function(){
 	var reports; 
 	var reportsList = []; 
 	var markersList = []; 
+	var reportLength; 
 
 
 	function getLocation() {
@@ -48,28 +49,29 @@ $(document).ready(function(){
         $('#school-name').text(data['schools'][0]['school_name']); 
 
         school_name = data['schools'][0]['school_name']; 
-        reports = data['schools'][0]['reports']; 
+        reports = data['schools'][0]['reports'];
+        reportLength = reports.length 
         console.log(reports); 
-        initialize(reports);  
+        initialize(reports, reportLength);  
        	}
 	})
 	}
 
-	function initialize(reports) {
+	function initialize(reports, reportLength) {
 		  var mapOptions = {
 		    zoom: 12
 		  };
 		  map = new google.maps.Map(document.getElementById('map-canvas'),
 		      mapOptions);
 
-		  google.maps.event.addListener(map, 'click', function(e) {
-		    placeMarker(e.latLng, map);
-		  });
-		var reports_length = reports.length; 
+		  // google.maps.event.addListener(map, 'click', function(e) {
+		  //   placeMarker(e.latLng, map);
+		  // });
 
-		for (var i=0; i < reports.length; i++) { 
+		for (var i=0; i < reportLength; i++) { 
+			// debugger;
 			var thisReport = reports[i]; 
-			reportsList.push(thisReport); 
+			// console.log(thisReport);
 
 			var thisLatlng = new google.maps.LatLng(thisReport['report_lat'],thisReport['report_long']);
 			
@@ -85,26 +87,22 @@ $(document).ready(function(){
 			var marker = new google.maps.Marker({
 
 				position: thisLatlng,
-
-				title:"Hello World!"
 				
 			});
 
-			markersList.push(marker); 
 
-			 google.maps.event.addListener(marker, 'click', function() {
+			google.maps.event.addListener(marker, 'click', function() {
 			    infowindow.open(map,marker);
-			  });
+			});
 
 			// To add the marker to the map, call setMap();
 			marker.setMap(map);
 
-			// alert(reports[i]); // testing purposes
 		}
 
-		document.getElementById('verbal').onclick=function() {
-			filter_by_type('verbal'); 
-		};
+		// document.getElementById('verbal').onclick=function() {
+		// 	filter_by_type('verbal'); 
+		// };
 
 		
 		function filter_by_type(type) {
