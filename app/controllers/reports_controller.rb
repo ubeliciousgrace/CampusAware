@@ -20,7 +20,14 @@ class ReportsController < ApplicationController
 
 
   def get_geo
-  schools = School.within(5, :origin => [params[:lat], params[:lng]])
+  schools = School.within(2, :origin => [params[:lat], params[:lng]])
+  @close_schools = []
+  schools.each do |school|
+    if school.lat != nil 
+      @close_schools << school
+    end
+  end
+
     respond_to do |format|
       format.json 
     end
