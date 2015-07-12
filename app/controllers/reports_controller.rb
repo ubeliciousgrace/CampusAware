@@ -18,7 +18,7 @@ class ReportsController < ApplicationController
 
 
       schools = School.within(100, :origin => [lat, long])
-      binding.pry
+      # binding.pry
       @close_schools = []
       schools.each do |school|
         if school.lat != nil
