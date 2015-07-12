@@ -10,7 +10,7 @@ Rails.application.routes.draw do
   root 'welcome#index'
 
   namespace :api do
-    resources :reports, :schools, :defaults => { :format => 'xml' }
+    resources :reports, :schools, :defaults => { :format => :json }
   end
 
   # Example of regular route:

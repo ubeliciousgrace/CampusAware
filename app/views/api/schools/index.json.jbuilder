@@ -11,5 +11,5 @@ json.schools @schools do |school|
   json.created_at school.created_at
 
 
-  json.report_id school.report ? school.report.id : nil
+  json.report_id school.report ? school.report_id : nil
 end

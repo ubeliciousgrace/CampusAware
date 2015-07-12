@@ -74,6 +74,7 @@ end
 
 # GET /api/{plural_resource_name}
 def index
+  respond_to :json
   plural_resource_name = "@#{resource_name.pluralize}"
   resources = resource_class.where(query_params)
                             .page(page_params[:page])
@@ -85,6 +86,7 @@ end
 
 # GET /api/{plural_resource_name}/1
 def show
+  respond_to :json
   respond_with get_resource
 end
 
