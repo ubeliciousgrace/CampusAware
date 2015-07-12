@@ -1,14 +1,49 @@
 <!DOCTYPE html>
+<style>
+/* report container */
+.report_fields {
+  margin-left: 40%;
+}
+
+/* footer css for all pages */
+#footer {
+  background-color: #222222;
+  position: relative;
+  height: 251px;
+  border-top: 1px solid #797777;
+  color: #797777;
+  text-shadow: 0 1px 0 rgba(0, 0, 0, 0.15);
+  padding-top: 40px;
+}
+</style>
 <html>
-<head>
-  <title>Chimehack2</title>
-  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
-  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
-</head>
-<body>
+  <head>
+    <title>Campus Safety</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <%= stylesheet_link_tag    'application' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+    <%= csrf_meta_tags %>
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+    <!-- BOOTSTRAP Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
 
-<%= yield %>
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
 
-</body>
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYKN9BDT7ZidYhsISTYbEOoSyLYgavr30"></script>   
+  </head>
+  <body>
+
+  <%= yield %>
+
+  </body>
 </html>

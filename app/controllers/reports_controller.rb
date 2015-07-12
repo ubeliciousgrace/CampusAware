@@ -8,12 +8,15 @@ class ReportsController < ApplicationController
   end
 
   def create
-    binding.pry
     @report = Report.create(report_params)
     if current_user 
       lat = @report.convert_to_latlng["lat"]
       long = @report.convert_to_latlng["lng"]
       @report.update(user_id: current_user.id, lat: lat, long: long)
+      schools = School.within(10, :origin => [lat, long])
+      binding.pry
+      closest_school = schools[0]
+      @report.update(school_id: closest_school)
     end
 
     redirect_to reports_path
@@ -22,6 +25,7 @@ class ReportsController < ApplicationController
 
   def get_geo
   schools = School.within(2, :origin => [params[:lat], params[:lng]])
+  #binding.pry
   @close_schools = []
   schools.each do |school|
     if school.lat != nil 

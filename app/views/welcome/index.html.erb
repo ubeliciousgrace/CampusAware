@@ -1,163 +1,137 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <title>Campus Safety</title>
-    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
-    <meta charset="utf-8">
-    <style>
-      html, body, #map-canvas {
-        height: 100%;
-        margin: 0px;
-        padding: 0px
-      }
-    </style>
+<script>
+	function initialize() {
+	  var mapOptions = {
+	    zoom: 10
+	  };
+	  map = new google.maps.Map(document.getElementById('map-canvas'),
+	      mapOptions);
 
-    <!-- BOOTSTRAP Latest compiled and minified CSS -->
-	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	  google.maps.event.addListener(map, 'click', function(e) {
+	    placeMarker(e.latLng, map);
+	  });
 
-	<!-- Font Awesome -->
-	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+	  // Try HTML5 geolocation
+	  if(navigator.geolocation) {
+	    navigator.geolocation.getCurrentPosition(function(position) {
+	      var pos = new google.maps.LatLng(position.coords.latitude,
+	                                       position.coords.longitude);
 
-	<!-- Latest compiled and minified JavaScript -->
-	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYKN9BDT7ZidYhsISTYbEOoSyLYgavr30"></script>   
-	<script>
-		function initialize() {
-		  var mapOptions = {
-		    zoom: 10
-		  };
-		  map = new google.maps.Map(document.getElementById('map-canvas'),
-		      mapOptions);
+	      // var infowindow = new google.maps.InfoWindow({
+	      //   map: map,
+	      //   position: pos,
+	      //   content: 'Location found using HTML5.'
+	      // });
 
-		  google.maps.event.addListener(map, 'click', function(e) {
-		    placeMarker(e.latLng, map);
-		  });
+	  //   	var marker = new google.maps.Marker({
+			//     position: pos,
+			//     title:"Hello World!"
+			// });
 
-		  // Try HTML5 geolocation
-		  if(navigator.geolocation) {
-		    navigator.geolocation.getCurrentPosition(function(position) {
-		      var pos = new google.maps.LatLng(position.coords.latitude,
-		                                       position.coords.longitude);
+			// // To add the marker to the map, call setMap();
+			// marker.setMap(map);
+			
+	      map.setCenter(pos);
+	    }, function() {
+	      handleNoGeolocation(true);
+	    });
+	  } else {
+	    // Browser doesn't support Geolocation
+	    handleNoGeolocation(false);
+	  }
+	}
+	function handleNoGeolocation(errorFlag) {
+	  if (errorFlag) {
+	    var content = 'Error: The Geolocation service failed.';
+	  } else {
+	    var content = 'Error: Your browser doesn\'t support geolocation.';
+	  }
 
-		      // var infowindow = new google.maps.InfoWindow({
-		      //   map: map,
-		      //   position: pos,
-		      //   content: 'Location found using HTML5.'
-		      // });
+	  var options = {
+	    map: map,
+	    position: new google.maps.LatLng(60, 105),
+	    content: content
+	  };
 
-		  //   	var marker = new google.maps.Marker({
-				//     position: pos,
-				//     title:"Hello World!"
-				// });
+	  var infowindow = new google.maps.InfoWindow(options);
+	  map.setCenter(options.position);
+	}
+	function placeMarker(position, map) {
+			  var marker = new google.maps.Marker({
+			    position: position,
+			    map: map
+			  });
+			  map.panTo(position);
+			}
 
-				// // To add the marker to the map, call setMap();
-				// marker.setMap(map);
-				
-		      map.setCenter(pos);
-		    }, function() {
-		      handleNoGeolocation(true);
-		    });
-		  } else {
-		    // Browser doesn't support Geolocation
-		    handleNoGeolocation(false);
-		  }
-		}
-		function handleNoGeolocation(errorFlag) {
-		  if (errorFlag) {
-		    var content = 'Error: The Geolocation service failed.';
-		  } else {
-		    var content = 'Error: Your browser doesn\'t support geolocation.';
-		  }
+	google.maps.event.addDomListener(window, 'load', initialize);
+</script>
 
-		  var options = {
-		    map: map,
-		    position: new google.maps.LatLng(60, 105),
-		    content: content
-		  };
+<body>
+	<div id="wrapper">
 
-		  var infowindow = new google.maps.InfoWindow(options);
-		  map.setCenter(options.position);
-		}
-		function placeMarker(position, map) {
-				  var marker = new google.maps.Marker({
-				    position: position,
-				    map: map
-				  });
-				  map.panTo(position);
-				}
+      <!-- Sidebar -->
+      <div id="sidebar-wrapper">
+          <ul class="sidebar-nav">
+              <li class="sidebar-brand">
+                  <a href="#">
+                  	
+                  </a>
+              </li>
+              <li>
+              	<h4 id="school-name"></h4>
 
-		google.maps.event.addDomListener(window, 'load', initialize);
-  </script>
-  </head>
+              </li>
+              <li>
+                  <h3><!-- <i class="fa fa-map-marker"></i> --> <%= link_to "Report Now", new_report_path %>
+              </li>
 
-  <body>
-  	<div id="wrapper">
+              <li>
+                  <h3><a href="#"><span class="glyphicon glyphicon-time"></span> Filter Time</a></h3>
+              </li>
 
-        <!-- Sidebar -->
-        <div id="sidebar-wrapper">
-            <ul class="sidebar-nav">
-                <li class="sidebar-brand">
-                    <a href="#">
-                    	
-                    </a>
-                </li>
-                <li>
-                	<h4 id="school-name"></h4>
+              <li>
+                  <h3><a href="#"><span class="glyphicon glyphicon-calendar"></span> Filter Dates</a></h3>
+              </li>
 
-                </li>
-                <li>
-                    <h3><!-- <i class="fa fa-map-marker"></i> --> <%= link_to "Report Now", new_report_path %>
-                </li>
+              <li>
+                  <h3><a href="#"><span class="glyphicon glyphicon-filter"></span> Filter Type</a></h3>
+              </li>
 
-                <li>
-                    <h3><a href="#"><span class="glyphicon glyphicon-time"></span> Filter Time</a></h3>
-                </li>
+              <% if user_signed_in? %>
+              <li>
+                  <h4><a hred="#"> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </a><h4>
+              </li>
+              <% else %>
 
-                <li>
-                    <h3><a href="#"><span class="glyphicon glyphicon-calendar"></span> Filter Dates</a></h3>
-                </li>
+              <li>
+                  <h4><a href="#"> <%= link_to "Sign up", new_user_registration_path %> </a></h4>
+              </li>
 
-                <li>
-                    <h3><a href="#"><span class="glyphicon glyphicon-filter"></span> Filter Type</a></h3>
-                </li>
+              <li>
+                <h4><a href="#"> <%= link_to "Sign In", new_user_session_path %> </a></h4>
+              </li>
+              <% end %>
+              <!-- <li>
+                  <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+              </li> -->
 
-                <% if user_signed_in? %>
-                <li>
-                    <h4><a hred="#"> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </a><h4>
-                </li>
-                <% else %>
+          </ul>
+      </div>
+      <!-- /#sidebar-wrapper -->
 
-                <li>
-                    <h4><a href="#"> <%= link_to "Sign up", new_user_registration_path %> </a></h4>
-                </li>
+      <!-- Page Content -->
+      <div id="page-content-wrapper">
+          <div class="container-fluid">
+              <div class="row" id="map">
+                  <div class="col-md-12">
+                  	<div id="map-canvas"></div>
 
-                <li>
-                  <h4><a href="#"> <%= link_to "Sign In", new_user_session_path %> </a></h4>
-                </li>
-                <% end %>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <!-- /#page-content-wrapper -->
 
-
-                <!-- <li>
-                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-                </li> -->
-
-            </ul>
-        </div>
-        <!-- /#sidebar-wrapper -->
-
-        <!-- Page Content -->
-        <div id="page-content-wrapper">
-            <div class="container-fluid">
-                <div class="row" id="map">
-                    <div class="col-md-12">
-                    	<div id="map-canvas"></div>
-
-                    </div>
-                </div>
-            </div>
-        </div>
-        <!-- /#page-content-wrapper -->
-
-    </div>
-  </body>
+  </div>
+</body>
 </html>
