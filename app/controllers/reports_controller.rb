@@ -10,7 +10,7 @@ class ReportsController < ApplicationController
   def create
 
     @report = Report.create(report_params)
-    if current_user 
+    if current_user
       lat = @report.convert_to_latlng["lat"]
       long = @report.convert_to_latlng["lng"]
       @report.update(user_id: current_user.id, lat: lat, long: long)
@@ -20,32 +20,38 @@ class ReportsController < ApplicationController
 
       @close_schools = []
       schools.each do |school|
-        if school.lat != nil 
+        if school.lat != nil
           @close_schools << school
         end
       end
       closest_school = @close_schools[0]
-      @report.update(school_id: closest_school.id) 
+      @report.update(school_id: closest_school.id)
     end
 
     redirect_to reports_path
   end
 
-  # TODO: pass in front end latitude & longitude into geo to return closest school  NOT report's geo 
-  def get_geo 
+  # TODO: pass in front end latitude & longitude into geo to return closest school  NOT report's geo
+  def get_geo
     schools = School.within(2, :origin => [params[:lat], params[:lng]])
 
     @close_schools = []
     schools.each do |school|
-      if school.lat != nil 
+      if school.lat != nil
         @close_schools << school
       end
     end
       respond_to do |format|
-        format.json 
+        format.json
       end
     end
 
+  def show_reports
+    @reports = Report.all
+    respond_to do |format|
+        format.json
+      end
+    end
 
   private
 
