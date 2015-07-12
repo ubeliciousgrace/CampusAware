@@ -16,6 +16,7 @@
 //= require_tree .
 //= require filterrific/filterrific-jquery
 
+
 $(document).ready(function(){
 	var latitude;
 	var longitude;
@@ -37,6 +38,9 @@ $(document).ready(function(){
 	       success: function(data){
 	       	// debugger;
 	        // console.log(data);
+	        console.log(data['schools'][0]['school_name']);
+	        $('#school-name').text(data['schools'][0]['school_name']);
+	        console.log(data);
 	        console.log(data['schools'][0]['school_name']);
 	        $('#school-name').text(data['schools'][0]['school_name']);
 	       }

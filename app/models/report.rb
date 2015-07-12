@@ -4,8 +4,6 @@ class Report < ActiveRecord::Base
  has_many :report_types
 
 
-
-
  def convert_to_latlng
    concat_address = self.street_number.to_s + " " + self.street_name + " " + self.city + " " + self.state + " " + self.zip_code.to_s
    coords = Geocoder.search(concat_address)

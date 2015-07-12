@@ -7,7 +7,6 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-<<<<<<< HEAD
 #School.create(name: "Berkeley")
 #School.create(name: "Princeton")
 #School.create(name: "UC Davis")
@@ -20,7 +19,6 @@
 #User.create(name: "Vanessa", school_name: "Berkeley")
 #User.create(name: "Nandini", school_name: "Berkeley")
 #User.create(name: "Sharon", school_name: "Berkeley")
-=======
 School.create(name: "Berkeley")
 School.create(name: "Princeton")
 School.create(name: "UC Davis")
@@ -33,4 +31,16 @@ ReportType.create(title: "Verbal")
 ReportType.create(title: "Physical")
 ReportType.create(title: "Stalking")
 ReportType.create(title: "Groping")
->>>>>>> origin/master
+
+# School.create(name: "Berkeley")
+# School.create(name: "Princeton")
+# School.create(name: "UC Davis")
+# School.create(name: "Stanford")
+School.create(name: "San Grace", lat: 37.7211802, long: -122.4769369)
+# School.create(name: "Harvard", lat: 42.3744, long: 71.1169)
+
+
+# ReportType.create(title: "Verbal")
+# ReportType.create(title: "Physical")
+# ReportType.create(title: "Stalking")
+# ReportType.create(title: "Groping")
