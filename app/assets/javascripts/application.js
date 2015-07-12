@@ -16,34 +16,49 @@
 //= require_tree .
 
 
-$(document).ready(function(){
+$(document).ready(function(){	
+
 	var latitude;
 	var longitude;
+	var school_name; 
+	var reports; 
+
 	function getLocation() {
-	  navigator.geolocation.getCurrentPosition(showPosition);
-	}
-  getLocation();
+    	navigator.geolocation.getCurrentPosition(showPosition);
+    }
+    getLocation();
 
-  function showPosition(position) {
-    latitude = position["coords"]["latitude"];
-    longitude = position["coords"]["longitude"];
-    // debugger;
-    $.ajax({
-    	type: 'POST',
-    	url: '/reports/get_geo',
-    	data: {lat: latitude, lng: longitude},
-    	success: function(data){
-     		// debugger;
-      	console.log(data); 
-      	console.log(data['schools'][0]['school_name']); 
-      	$('#school-name').text(data['schools'][0]['school_name']); 
-     	}
-  	})
+    function showPosition(position) {
+      latitude = position["coords"]["latitude"];
+      longitude = position["coords"]["longitude"];
+      // debugger;
+      $.ajax({
+       type: 'POST',
+       url: '/reports/get_geo',
+       data: {lat: latitude, lng: longitude},
+
+       success: function(data){
+       	// debugger;
+        console.log(data); 
+        // console.log(data['schools'][0]['school_name']); 
+        $('#school-name').text(data['schools'][0]['school_name']); 
+
+        school_name = data['schools'][0]['school_name']; 
+        reports = data['schools'][0]['reports']; 
+        
+        // debugger; 
+        console.log(reports); 
+        initialize(reports);  
+       	// $('#school-name').text(school_name); 
+
+
+       	}
+	})
 	}
 
-	function initialize() {
+	function initialize(reports) {
 		  var mapOptions = {
-		    zoom: 10
+		    zoom: 12
 		  };
 		  map = new google.maps.Map(document.getElementById('map-canvas'),
 		      mapOptions);
@@ -51,6 +66,45 @@ $(document).ready(function(){
 		  google.maps.event.addListener(map, 'click', function(e) {
 		    placeMarker(e.latLng, map);
 		  });
+		var reports_length = reports.length; 
+
+		for (var i=0; i < reports.length; i++) { 
+			var thisReport = reports[i]; 
+			var thisLatlng = new google.maps.LatLng(thisReport['report_lat'],thisReport['report_long']);
+
+			
+			var contentString = '<h2>' + thisReport['report_title'] + '</h2>' + '<p>Type: ' + thisReport['type'][0]['type_title'] + '</p>' + '<p>' + thisReport['report_description'] + '</p>'; 
+
+			var infowindow = new google.maps.InfoWindow({
+		       
+		        content: contentString
+		    });
+
+
+
+
+			var marker = new google.maps.Marker({
+
+				position: thisLatlng,
+
+				title:"Hello World!"
+				
+			});
+
+			 google.maps.event.addListener(marker, 'click', function() {
+			    infowindow.open(map,marker);
+			  });
+
+
+
+			// To add the marker to the map, call setMap();
+			marker.setMap(map);
+
+			// alert(reports[i]); // testing purposes
+		}
+
+
+
 
 		  // Try HTML5 geolocation
 		  if(navigator.geolocation) {
@@ -69,7 +123,7 @@ $(document).ready(function(){
 				//     title:"Hello World!"
 				// });
 
-				// // To add the marker to the map, call setMap();
+				// To add the marker to the map, call setMap();
 				// marker.setMap(map);
 
 		      map.setCenter(pos);

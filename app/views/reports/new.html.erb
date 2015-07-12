@@ -2,7 +2,7 @@
   <div class = "report_container">
     <div class = "report_fields">
       <%= form_for(@report) do |f| %>
-       
+
         <div class="field">
           <%= f.label :title %><br />
           <%= f.text_field :title, autofocus: true %>
@@ -21,7 +21,7 @@
 
         <div class="field">
           <%= f.collection_check_boxes :report_type_ids, ReportType.all, :id, :title %><br />
-          
+
         </div>
 
         <div class="field">

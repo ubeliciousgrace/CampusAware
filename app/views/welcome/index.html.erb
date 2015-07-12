@@ -1,3 +1,118 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Campus Safety</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+
+    <!-- BOOTSTRAP Latest compiled and minified CSS -->
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+	<!-- Font Awesome -->
+	<link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+	<!-- Latest compiled and minified JavaScript -->
+	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYKN9BDT7ZidYhsISTYbEOoSyLYgavr30"></script>
+
+	<script>
+
+
+
+
+    </script>
+  </head>
+
+
+  	<div id="wrapper">
+          <body>
+
+        <!-- Sidebar -->
+        <div id="sidebar-wrapper">
+            <ul class="sidebar-nav">
+                <li class="sidebar-brand">
+                    <a href="#">
+
+                    </a>
+                </li>
+                <li>
+                	<h4 id="school-name"></h4>
+
+                </li>
+                <li>
+                    <h3><!-- <i class="fa fa-map-marker"></i> --> <%= link_to "Report Now", new_report_path %>
+                </li>
+
+                <li>
+                    <h3><a href="#"><span class="glyphicon glyphicon-time"></span> Filter Time</a></h3>
+                </li>
+
+                <li>
+                    <h3><a href="#"><span class="glyphicon glyphicon-calendar"></span> Filter Dates</a></h3>
+                </li>
+
+                <li>
+                    <h3><a href="#"><span class="glyphicon glyphicon-filter"></span> Filter Type</a></h3>
+                </li>
+
+                <% if user_signed_in? %>
+                <li>
+                    <h4><a hred="#"> <%= link_to "Sign Out", destroy_user_session_path, method: :delete %> </a><h4>
+                </li>
+                <% else %>
+
+                <li>
+                    <h4><a href="#"> <%= link_to "Sign up", new_user_registration_path %> </a></h4>
+                </li>
+
+                <li>
+                  <h4><a href="#"> <%= link_to "Sign In", new_user_session_path %> </a></h4>
+                </li>
+                <% end %>
+
+
+                <!-- <li>
+                    <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
+                </li> -->
+
+            </ul>
+        </div>
+        <!-- /#sidebar-wrapper -->
+
+        <!-- Page Content -->
+        <div id="page-content-wrapper">
+            <div class="container-fluid">
+
+
+
+
+                <div class="row" id="map">
+                    <div class="col-md-12">
+                    	<div id="map-canvas"></div>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- /#page-content-wrapper -->
+
+
+
+  </body>
+      </div>
+
+</html>
+
+
+<%= link_to "Reports", reports_path %>
+=======
 <script>
 	function initialize() {
 	  var mapOptions = {
@@ -29,7 +144,7 @@
 
 			// // To add the marker to the map, call setMap();
 			// marker.setMap(map);
-			
+
 	      map.setCenter(pos);
 	    }, function() {
 	      handleNoGeolocation(true);
@@ -74,7 +189,7 @@
           <ul class="sidebar-nav">
               <li class="sidebar-brand">
                   <a href="#">
-                  	
+
                   </a>
               </li>
               <li>
