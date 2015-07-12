@@ -6,7 +6,7 @@ json.schools @close_schools do |school|
     json.report_lat report.lat
     json.report_lat report.long
     json.timestamp report.created_at
-    json.type report.report_types do |type|
+    json.type report.types do |type|
       json.type_title type.title
     end
   end
