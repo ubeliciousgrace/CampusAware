@@ -14,7 +14,11 @@
 
             </li>
             <li>
-                <h3><!-- <i class="fa fa-map-marker"></i> --> <%= link_to "Report Now", new_report_path %>
+                <h3><%= link_to "Report Now", new_report_path %>
+            </li>
+
+            <li>
+                <h3><%= link_to "Try Out API", welcome_api_path %></h3>
             </li>
 
             <li>
@@ -26,6 +30,7 @@
             </li>
 
             <li>
+<<<<<<< HEAD
 	            <div class="btn-group">
 				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 				    <span class="glyphicon glyphicon-filter"></span>  Filter Type <span class="caret"></span>
@@ -39,6 +44,22 @@
 				  </ul>
 				</div>
 			</li>
+=======
+              <h3>
+  	            <div class="btn-group">
+        				  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+        				    <span class="glyphicon glyphicon-filter"></span>  Filter Type <span class="caret"></span>
+        				  </button>
+        				  <ul class="dropdown-menu">
+        				    <li><a href="#" id="verbal">Verbal</a></li>
+        				    <li><a href="javascript:filter_by_type('physical');">Physical</a></li>
+        				    <li><a href="javascript:filter_by_type('stalking');">Stalking</a></li>
+        				    <li><a href="javascript:filter_by_type('groping');">Groping</a></li>
+        				  </ul>
+        				</div>
+              </h3>
+      			</li>
+>>>>>>> ee108dd8bb2787b7153a4c991da113ee36b0d7c8
 
             <% if user_signed_in? %>
             <li>
@@ -54,12 +75,6 @@
               <h4><a href="#"> <%= link_to "Sign In", new_user_session_path %> </a></h4>
             </li>
             <% end %>
-
-
-            <!-- <li>
-                <a href="#menu-toggle" class="btn btn-default" id="menu-toggle">Toggle Menu</a>
-            </li> -->
-
         </ul>
     </div>
     <!-- /#sidebar-wrapper -->

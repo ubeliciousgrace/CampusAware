@@ -1,4 +1,5 @@
 class ReportType < ActiveRecord::Base
-  has_many :report_types
+  belongs_to :report
+  belongs_to :type
 
 end
