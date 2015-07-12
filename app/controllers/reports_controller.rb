@@ -28,7 +28,7 @@ class ReportsController < ApplicationController
       @report.update(school_id: closest_school.id)
     end
 
-    redirect_to reports_path
+    redirect_to root_path
   end
 
   # TODO: pass in front end latitude & longitude into geo to return closest school  NOT report's geo
