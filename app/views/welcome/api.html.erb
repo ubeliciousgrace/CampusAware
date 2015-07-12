@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Campus Aware API</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html, body, #map-canvas {
+        height: 100%;
+        margin: 0px;
+        padding: 0px
+      }
+    </style>
+
+    <!-- BOOTSTRAP Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAYKN9BDT7ZidYhsISTYbEOoSyLYgavr30"></script>
+  </head>
+
+<div id="api-wrapper">
+
+ <!-- Page Content -->
+
+                <div class="page-header">
+  <h2>Campus Aware API</h2><h3> <small>Use our data to empower and support your policy changes and campaigns to end sexual assault on campus</small></h3>
+</div>
+
+
+  <table class="table" border-top="none">
+    <tr>
+      <th class="col-md-3">Call</th>
+      <th class="col-md-6">Description</th>
+      <th class="col-md-3"></th>
+    </tr>
+  <tbody>
+    <tr>
+      <td> <p class="text-primary">all_reports</p></td>
+      <td><p class="text-muted">Returns a json list of all reports and its attributes</p></td>
+      <td>
+     <%= button_to "Try it!", "/reports/show_reports.json", method: :get, class: "btn btn-small btn-success" %>
+    </td>
+    </tr>
+
+    <tr>
+      <td> <p class="text-primary">all_reports_by_time</p></td>
+      <td><p class="text-muted">Returns a json list of all reports sorted by time</p></td>
+      <td>
+  <%= button_to "Try it!", reports_show_reports_path, method: :get, class: "btn btn-small btn-success" %>
+</td>
+
+    </tr>
+    <tr>
+      <td> <p class="text-primary">all_reports_by_type</p></td>
+      <td><p class="text-muted">Returns a json list of all reports sorted by type</p></td>
+      <td>
+  <%= button_to "Try it!", reports_show_reports_path, method: :get, class: "btn btn-small btn-success" %>
+</td>
+</tr>
+   <tr><td><p class="text-primary">all_participating_schools</p></td>
+      <td><p class="text-muted">Returns a json list of all schools associated with reports</p></td>
+      <td>
+     <%= button_to "Try it!", "/reports/show_reports.json", method: :get, class: "btn btn-small btn-success" %>
+    </td>
+    </tr>
+    <tr>
+      <td> <p class="text-primary">school_with_most_reports</p></td>
+      <td><p class="text-muted">Returns a json list of the school with the most reports</p></td>
+      <td>
+  <%= button_to "Try it!", reports_show_reports_path, method: :get, class: "btn btn-small btn-success" %>
+</td>
+    </tr>
+    <tr>
+      <td> <p class="text-primary">most_common_report_type</p></td>
+      <td><p class="text-muted">Returns the most common type of reported sexual harrasment</p></td>
+      <td>
+  <%= button_to "Try it!", reports_show_reports_path, method: :get, class: "btn btn-small btn-success" %>
+</td>
+    </tr>
+</tbody>
+</table>
+
+<h4>Future API Calls</h4>
+
+<table class="table" border-top="none">
+    <tr>
+      <th class="col-md-3">Call</th>
+      <th class="col-md-6">Description</th>
+      <th class="col-md-3"></th>
+    </tr>
+  <tbody>
+    <tr>
+      <td> <p class="text-primary">school_with_most_/<div class="input-group">
+  <input type="text" class="form-control" placeholder="type_of_harassment" aria-describedby="basic-addon1">
+</div></p></td>
+      <td><p class="text-muted">Returns a school. ex) call=school_with_most_verbalassault</p></td>
+      <td>
+     <%= button_to "Try it!", "/reports/show_reports.json", method: :get, class: "btn btn-small btn-success" %>
+    </td>
+    </tr>
+    <tr>
+      <td> <p class="text-primary">reports_for_/<div class="input-group">
+  <input type="text" class="form-control" placeholder="school" aria-describedby="basic-addon1">
+</div></p></td>
+      <td><p class="text-muted">Returns a json list of all reports assosciated with a certain school. ex)call=reports_for_berkeley</p></td>
+      <td>
+  <%= button_to "Try it!", reports_show_reports_path, method: :get, class: "btn btn-small btn-success" %>
+</td>
+    </tr>
+    <tr>
+      <td> <p class="text-primary">reports_with_/<div class="input-group">
+  <input type="text" class="form-control" placeholder="report_type" aria-describedby="basic-addon1">
+</div></p></td>
+      <td><p class="text-muted">Returns a json list of reports of a type. ex) call=reports_with_verbalassault</p></td>
+      <td>
+  <%= button_to "Try it!", reports_show_reports_path, method: :get, class: "btn btn-small btn-success" %>
+</td>
+    </tr>
+  </tbody>
+</table>
+
+
+</div>
+
+
+
+
+    </body>
+</html>
+
+
+

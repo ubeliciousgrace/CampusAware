@@ -1,6 +1,10 @@
 Rails.application.routes.draw do
   devise_for :users
   post 'reports/get_geo', to: 'reports#get_geo'
+  get 'reports/filter', to: 'reports#filter'
+  get 'reports/show_reports', to: 'reports#show_reports'
+  get 'welcome/api', to: 'welcome#api'
+
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

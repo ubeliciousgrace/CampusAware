@@ -14,40 +14,45 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require filterrific/filterrific-jquery
 
 $(document).ready(function(){
-  var latitude;
-  var longitude;
+	var latitude;
+	var longitude;
 
-function getLocation() {
-     navigator.geolocation.getCurrentPosition(showPosition);
-    }
-    getLocation();
 
-    function showPosition(position) {
-      latitude = position["coords"]["latitude"];
-      longitude = position["coords"]["longitude"];
-      // debugger;
-      $.ajax({
-       type: 'POST',
-       url: '/reports/get_geo',
-       data: {lat: latitude, lng: longitude},
-       success: function(data){
-        console.log(data)
-       }
-    })
-    }
+	function getLocation() {
+	     navigator.geolocation.getCurrentPosition(showPosition);
+	    }
+	    getLocation();
 
-});
+	    function showPosition(position) {
+	      latitude = position["coords"]["latitude"];
+	      longitude = position["coords"]["longitude"];
+	      // debugger;
+	      $.ajax({
+	       type: 'POST',
+	       url: '/reports/get_geo',
+	       data: {lat: latitude, lng: longitude},
+	       success: function(data){
+	       	// debugger;
+	        // console.log(data);
+	        console.log(data['schools'][0]['school_name']);
+	        $('#school-name').text(data['schools'][0]['school_name']);
+	       }
+	    })
+	    }
 
-var map;
-
-		function initialize() {
+	function initialize() {
 		  var mapOptions = {
 		    zoom: 10
 		  };
 		  map = new google.maps.Map(document.getElementById('map-canvas'),
 		      mapOptions);
+
+		  google.maps.event.addListener(map, 'click', function(e) {
+		    placeMarker(e.latLng, map);
+		  });
 
 		  // Try HTML5 geolocation
 		  if(navigator.geolocation) {
@@ -55,11 +60,19 @@ var map;
 		      var pos = new google.maps.LatLng(position.coords.latitude,
 		                                       position.coords.longitude);
 
-		      var infowindow = new google.maps.InfoWindow({
-		        map: map,
-		        position: pos,
-		        content: 'Location found using HTML5.'
-		      });
+		      // var infowindow = new google.maps.InfoWindow({
+		      //   map: map,
+		      //   position: pos,
+		      //   content: 'Location found using HTML5.'
+		      // });
+
+		  //   	var marker = new google.maps.Marker({
+				//     position: pos,
+				//     title:"Hello World!"
+				// });
+
+				// // To add the marker to the map, call setMap();
+				// marker.setMap(map);
 
 		      map.setCenter(pos);
 		    }, function() {
@@ -70,6 +83,8 @@ var map;
 		    handleNoGeolocation(false);
 		  }
 		}
+
+
 
 		function handleNoGeolocation(errorFlag) {
 		  if (errorFlag) {
@@ -88,6 +103,7 @@ var map;
 		  map.setCenter(options.position);
 		}
 
+
 		function placeMarker(position, map) {
 				  var marker = new google.maps.Marker({
 				    position: position,
@@ -96,7 +112,10 @@ var map;
 				  map.panTo(position);
 				}
 
-				google.maps.event.addDomListener(window, 'load', initialize);
-
-
 		google.maps.event.addDomListener(window, 'load', initialize);
+
+});
+
+
+
+
