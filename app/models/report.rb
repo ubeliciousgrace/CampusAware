@@ -1,6 +1,7 @@
 class Report < ActiveRecord::Base
  belongs_to :user
  belongs_to :school
+ has_many :report_types
 
 
  def convert_to_latlng

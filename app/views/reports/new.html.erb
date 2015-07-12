@@ -12,6 +12,16 @@
   </div>
 
   <div class="field">
+    <%= f.label :bystander_or_victim %><br />
+    <%= f.select :bystander_or_victim, ["This incident happened to me", "I witnessed this incident happen"] %>
+  </div>
+
+  <div class="field">
+    <%= f.collection_check_boxes :report_type_ids, ReportType.all, :id, :title %><br />
+    
+  </div>
+
+  <div class="field">
     <%= f.label :street_number %><br />
     <%= f.number_field :street_number %>
   </div>
