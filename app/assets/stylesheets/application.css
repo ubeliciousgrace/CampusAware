@@ -21,11 +21,15 @@ html, body, #map-canvas {
         font-family: 'Lato', sans-serif;
 }
 
+
+
 #wrapper, #page-content-wrapper, .container-fluid, .row#map, .col-md-10, .col-md-12  {
 	height:100%;
 }
 
-
+.report_container {
+	  margin-top: 6%;
+}
 div#page-content-wrapper {
 	background-color: #363636;
 }
