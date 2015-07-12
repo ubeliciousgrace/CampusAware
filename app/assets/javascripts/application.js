@@ -53,13 +53,8 @@ $(document).ready(function(){
 
         school_name = data['schools'][0]['school_name']; 
         reports = data['schools'][0]['reports']; 
-        
-        // debugger; 
         console.log(reports); 
         initialize(reports);  
-       	// $('#school-name').text(school_name); 
-
-
        	}
 	})
 	}
