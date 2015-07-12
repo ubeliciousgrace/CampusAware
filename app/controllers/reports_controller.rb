@@ -27,7 +27,6 @@ class ReportsController < ApplicationController
       @close_schools << school
     end
   end
-
     respond_to do |format|
       format.json 
     end
@@ -37,7 +36,7 @@ class ReportsController < ApplicationController
   private
 
   def report_params
-    params.require(:report).permit(:title, :description, :street_number, :street_name, :city, :state, :zip_code)
+    params.require(:report).permit(:title, :description, :street_number, :street_name, :city, :state, :zip_code, :bystander_or_victim)
   end
 
 end
