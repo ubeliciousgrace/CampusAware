@@ -7,7 +7,9 @@
 #   Mayor.create(name: 'Emanuel', city: cities.first)
 
 
-School.create(name: "Berkley")
-School.create(name: "Princeton")
-School.create(name: "UC Davis")
-School.create(name: "Stanford")
+# School.create(name: "Berkley")
+# School.create(name: "Princeton")
+# School.create(name: "UC Davis")
+# School.create(name: "Stanford")
+# School.create(name: "San Francisco State", lat: 37.7762513, long: -122.4167688)
+School.create(name: "Harvard", lat: 42.3744, long: 71.1169)
