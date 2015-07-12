@@ -18,22 +18,18 @@
 
 $(document).ready(function(){
 	
-	document.getElementById('verbal').onclick=function() {
-		filter_by_type('test'); 
-	};
-	
-	function filter_by_type(type) {
-		alert("BLAH");  
-	}
-
 	var latitude;
 	var longitude;
 	var school_name; 
 	var reports; 
+	var reportsList = []; 
+	var markersList = []; 
+
 
 	function getLocation() {
     	navigator.geolocation.getCurrentPosition(showPosition);
     }
+    
     getLocation();
 
     function showPosition(position) {
@@ -65,7 +61,6 @@ $(document).ready(function(){
 	}
 
 	function initialize(reports) {
-		var reportsList = []; 
 		  var mapOptions = {
 		    zoom: 12
 		  };
@@ -82,10 +77,11 @@ $(document).ready(function(){
 			reportsList.push(thisReport); 
 
 			var thisLatlng = new google.maps.LatLng(thisReport['report_lat'],thisReport['report_long']);
-
 			
-			var contentString = '<h2>' + thisReport['report_title'] + '</h2>' + '<p>Type: ' + thisReport['type'][0]['type_title'] + '</p>' + '<p>' + thisReport['report_description'] + '</p>'; 
-
+			var contentString = '<h2>' + thisReport['report_title'] + '</h2>' + '</p>' + '<p>' + thisReport['report_description'] + '</p>'; 
+			
+			//'<p>Type: ' + thisReport['type'][0]['type_title']
+			// console.log(thisReport['type'][0]['type_title']);
 			var infowindow = new google.maps.InfoWindow({
 		       
 		        content: contentString
@@ -99,11 +95,11 @@ $(document).ready(function(){
 				
 			});
 
+			markersList.push(marker); 
+
 			 google.maps.event.addListener(marker, 'click', function() {
 			    infowindow.open(map,marker);
 			  });
-
-
 
 			// To add the marker to the map, call setMap();
 			marker.setMap(map);
@@ -111,28 +107,56 @@ $(document).ready(function(){
 			// alert(reports[i]); // testing purposes
 		}
 
+		document.getElementById('verbal').onclick=function() {
+			filter_by_type('verbal'); 
+		};
 
+		
+		function filter_by_type(type) {
+			deleteMarkers(); 
+			if (type == 'verbal') {
+				for (var i=0; i < reportsList.length; i++) {
+					var thisReport = reportsList[i]; 
+					var thisReportType = thisReport['type']; 
+					if(thisReportType=="Verbal") {
 
+					var thisLatlng = new google.maps.LatLng(thisReport['report_lat'],thisReport['report_long']);
+					
+					var contentString = '<h2>' + thisReport['report_title'] + '</h2>' + '<p>Type: ' + thisReport['type'][0]['type_title'] + '</p>' + '<p>' + thisReport['report_description'] + '</p>'; 
+
+					var infowindow = new google.maps.InfoWindow({
+				       
+				        content: contentString
+				    });
+
+					var marker = new google.maps.Marker({
+
+						position: thisLatlng,
+
+						title:"Hello World!"
+						
+					});
+
+					reportsList.push(marker); 
+
+					 google.maps.event.addListener(marker, 'click', function() {
+					    infowindow.open(map,marker);
+					  });
+
+					// To add the marker to the map, call setMap();
+					marker.setMap(map);
+								
+							}
+						}
+
+					}
+				}
 
 		  // Try HTML5 geolocation
 		  if(navigator.geolocation) {
 		    navigator.geolocation.getCurrentPosition(function(position) {
 		      var pos = new google.maps.LatLng(position.coords.latitude,
 		                                       position.coords.longitude);
-
-		      // var infowindow = new google.maps.InfoWindow({
-		      //   map: map,
-		      //   position: pos,
-		      //   content: 'Location found using HTML5.'
-		      // });
-
-		  //   	var marker = new google.maps.Marker({
-				//     position: pos,
-				//     title:"Hello World!"
-				// });
-
-				// To add the marker to the map, call setMap();
-				// marker.setMap(map);
 
 		      map.setCenter(pos);
 		    }, function() {
@@ -143,8 +167,6 @@ $(document).ready(function(){
 		    handleNoGeolocation(false);
 		  }
 		}
-
-
 
 		function handleNoGeolocation(errorFlag) {
 		  if (errorFlag) {
@@ -165,12 +187,23 @@ $(document).ready(function(){
 
 
 		function placeMarker(position, map) {
-				  var marker = new google.maps.Marker({
-				    position: position,
-				    map: map
-				  });
-				  map.panTo(position);
-				}
+		  var marker = new google.maps.Marker({
+		    position: position,
+		    map: map
+		  });
+		  map.panTo(position);
+		}
+		// Sets the map on all markers in the array.
+		function clearMarkers(map) {
+		  for (var i = 0; i < markersList.length; i++) {
+		    markersList[i].setMap(null);
+		  }
+		}
+
+		// Deletes all markers in the array by removing references to them.
+		function deleteMarkers() {
+		  clearMarkers();
+		}
 
 		google.maps.event.addDomListener(window, 'load', initialize);
 
