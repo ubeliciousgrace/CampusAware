@@ -10,11 +10,13 @@ Rails.application.routes.draw do
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
-  resources :reports
+  resources :reports, constraints: { subdomain : 'api'}
   root 'welcome#index'
 
-  namespace :api do
-    resources :reports, :schools, :defaults => { :format => :json }
+  constraints subdomain: 'api' do
+    namespace :api do
+      resources :reports, :schools, :defaults => { :format => :json }
+    end
   end
 
   # Example of regular route:
