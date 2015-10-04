@@ -4,6 +4,9 @@
 
 Through these anonymous geo-tagged posts, users can not only help other users navigate their cities safely but also provide data for NPOs and police enforcement to take future meaningful action. Besides a social network between users, we will visualize the data real-time and ideally create an API (future feature) to serve as tools for NPOs/police enforcement/etc  to use.
 
+
+
+
 # How it works
 > We took a 4 prong approach to this problem: community-driven, anonymous space to report injustice, real time data, and accountability.
 
@@ -20,6 +23,7 @@ As reports populate our map, we provide real time data through a REST API for Un
 By providing our data publicly, we believe that we are holding Universities more accountable for their current efforts on sexual harassment/violence on their campus.
 
 
+
 # Feature Details
 
 | Feature       | Goals                                        |
@@ -28,5 +32,14 @@ By providing our data publicly, we believe that we are holding Universities more
 | Google Maps   | reports are shown on a google map, details are visible by clicking each pin.|
 | RESTful API   | providing developers to use our data to build cool apps.|
 
+
+
+# Screenshots
+
+Main Report Visibility: 
+![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/main_image.jpg "Main Page")
+
+Reporting Page
+![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/report_page.jpg "Reporting Page")
 
 [Check out our DevPost](http://devpost.com/software/visualizing-tool)
