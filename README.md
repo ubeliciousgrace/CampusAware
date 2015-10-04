@@ -25,6 +25,7 @@ By providing our data publicly, we believe that we are holding Universities more
 
 
 # Feature Details
+[Check out our DevPost](http://devpost.com/software/visualizing-tool)
 
 | Feature       | Goals                                        |
 | ------------- |:--------------------------------------------:|
@@ -44,7 +45,7 @@ By providing our data publicly, we believe that we are holding Universities more
 > our belief is that reporting should be simple, intuitive and available. We collect minimum required data from a report, keeping the reporter's privacy.
 ![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/report_page.jpg "Reporting Page")
 
-[Check out our DevPost](http://devpost.com/software/visualizing-tool)
+
 
 
 
