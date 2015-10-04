@@ -36,13 +36,18 @@ By providing our data publicly, we believe that we are holding Universities more
 
 # Screenshots
 
-#### Main Report Visibility: ![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/main_image.jpg "Main Page")
+#### Main Report Visibility: 
+> a user enters a zipcode or we collect geodata of te user so that she/he can view reports within their community. They can simply click an individual pin on Goolge Maps to navigate to details of the report.
+![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/main_image.jpg "Main Page")
 
-#### Reporting Page: ![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/report_page.jpg "Reporting Page")
+#### Reporting Page: 
+> our belief is that reporting should be simple, intuitive and available. We collect minimum required data from a report, keeping the reporter's privacy.
+![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/report_page.jpg "Reporting Page")
 
 [Check out our DevPost](http://devpost.com/software/visualizing-tool)
 
 
 
-
-want to give us feedback or interested in forming a team a upcoming hackathon? check out our LinkedIn profiles
+```
+want to give us feedback or interested in forming a team a upcoming hackathon? Shoot us an email! We want to solve problems together, make changes, and help others!
+```
