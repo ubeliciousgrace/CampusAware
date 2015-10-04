@@ -50,5 +50,7 @@ By providing our data publicly, we believe that we are holding Universities more
 
 
 ```
-want to give us feedback or interested in forming a team a upcoming hackathon? Shoot us an email! We want to solve problems together, make changes, and help others!
+want to give us feedback or interested in forming a team a upcoming hackathon? 
+Shoot us an email! 
+We want to solve problems together, make changes, and help others!
 ```
