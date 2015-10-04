@@ -10,16 +10,16 @@ Through these anonymous geo-tagged posts, users can not only help other users na
 # How it works
 > We took a 4 prong approach to this problem: community-driven, anonymous space to report injustice, real time data, and accountability.
 
-## Community-Driven
+#### Community-Driven
 Each user is affiliated with their campus because we believe that students are motivated by making their own campus better.
 
-## Anonymous
+#### Anonymous
 Users can report an incident to the app as a bystander or victim anonymously through geotagged posts that we use to generate a map visualization for users.
 
-## Real-time Data
+#### Real-time Data
 As reports populate our map, we provide real time data through a REST API for University administration, non-profits, police, student groups and organizations and users to use to for data analysis, data visualizations or campus sexual assault reports.
 
-## Accountability
+#### Accountability
 By providing our data publicly, we believe that we are holding Universities more accountable for their current efforts on sexual harassment/violence on their campus.
 
 
@@ -36,10 +36,13 @@ By providing our data publicly, we believe that we are holding Universities more
 
 # Screenshots
 
-Main Report Visibility: 
-![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/main_image.jpg "Main Page")
+#### Main Report Visibility: ![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/main_image.jpg "Main Page")
 
-Reporting Page
-![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/report_page.jpg "Reporting Page")
+#### Reporting Page: ![alt text](https://github.com/graceeunbekim/CampusAware/blob/master/image/report_page.jpg "Reporting Page")
 
 [Check out our DevPost](http://devpost.com/software/visualizing-tool)
+
+
+
+
+want to give us feedback or interested in forming a team a upcoming hackathon? check out our LinkedIn profiles
