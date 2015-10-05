@@ -1,6 +1,6 @@
 # Campus Aware
 
-> Out mission is to empower victims of sexual harassment or sexual assault to actively report their experiences anonymously through geotagged posts and pictures and contribute to a map visualization of sexual harassment available for all users. 
+> Our mission is to empower victims of sexual harassment or sexual assault to actively report their experiences anonymously through geotagged posts and pictures and contribute to a map visualization of sexual harassment available for all users. 
 
 Through these anonymous geo-tagged posts, users can not only help other users navigate their cities safely but also provide data for NPOs and police enforcement to take future meaningful action. Besides a social network between users, we will visualize the data real-time and ideally create an API (future feature) to serve as tools for NPOs/police enforcement/etc  to use.
 
