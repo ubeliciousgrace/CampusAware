@@ -10,7 +10,7 @@ gem 'pg'
 gem 'filterrific'
 # Use SCSS for stylesheets
 gem 'ember-rails'
-gem 'ember-source', '~> 1.9.0'
+gem 'ember-source', '~> 1.11.4'
 gem 'sass-rails', '~> 4.0.3'
 # Use Uglifier as compressor for JavaScript assets
 gem 'uglifier', '>= 1.3.0'
